@@ -3,11 +3,16 @@ import axios from 'axios';
 import sinon from 'sinon';
 import configureStore from 'redux-mock-store';
 import promiseMiddleware from 'redux-promise-middleware';
+import { TranslatorContext } from 'react-jhipster';
 
 import { FAILURE, REQUEST, SUCCESS } from 'app/shared/reducers/action-type.util';
 import register, { ACTION_TYPES, handleRegister, reset } from 'app/modules/account/register/register.reducer';
 
 describe('Creating account tests', () => {
+  beforeAll(() => {
+    TranslatorContext.registerTranslations('en', {});
+  });
+
   const initialState = {
     loading: false,
     registrationSuccess: false,
